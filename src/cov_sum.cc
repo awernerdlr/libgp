@@ -17,6 +17,13 @@ namespace libgp
     delete first;
     delete second;
   }
+
+  CovSum::CovSum(CovSum const &s) :
+        CovarianceFunction(s),
+	param_dim_first(s.param_dim_first),
+	param_dim_second(s.param_dim_second),
+	first(s.first->clone()),
+	second(s.second->clone()){}
   
   bool CovSum::init(int n, CovarianceFunction * first, CovarianceFunction * second)
   {
@@ -56,5 +63,9 @@ namespace libgp
   std::string CovSum::to_string()
   {
     return "CovSum("+first->to_string()+", "+second->to_string()+")";
+  }
+  
+  CovarianceFunction * CovSum::clone() const {
+    return new CovSum(*this);
   }
 }

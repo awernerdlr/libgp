@@ -11,7 +11,14 @@ namespace libgp
   
   InputDimFilter::InputDimFilter() {}
   
-  InputDimFilter::~InputDimFilter() {}
+  InputDimFilter::~InputDimFilter() {
+  	delete nested; // FIXME: not sure if this is a special case here
+  }
+
+  InputDimFilter::InputDimFilter(InputDimFilter const &s):
+        CovarianceFunction(s),
+	filter(s.filter),
+	nested(s.nested->clone()){}
   
   bool InputDimFilter::init(int input_dim, int filter, CovarianceFunction * covf)
   {
@@ -45,6 +52,10 @@ namespace libgp
     std::ostringstream is;
     is <<  "InputDimFilter(" << filter << "/" << nested->to_string() << ")";
     return is.str();
+  }
+
+  CovarianceFunction * InputDimFilter::clone() const {
+  	return new InputDimFilter(*this);
   }
 }
 

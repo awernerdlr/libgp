@@ -47,4 +47,8 @@ namespace libgp
     return "CovMatern3iso";
   }
   
+  CovarianceFunction * CovMatern3iso::clone() const {
+    return new CovMatern3iso(*this);
+  }
+  
 }

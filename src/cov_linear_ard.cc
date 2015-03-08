@@ -41,5 +41,9 @@ namespace libgp
   {
     return "CovLinearard";
   }
+
+  CovarianceFunction * CovLinearard::clone() const {
+    return new CovLinearard(*this);
+  }
 }
 

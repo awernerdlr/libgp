@@ -47,4 +47,7 @@ namespace libgp
     return "CovPeriodic";
   }
   
+  CovarianceFunction * CovPeriodic::clone() const {
+    return new CovPeriodic(*this);
+  }
 }

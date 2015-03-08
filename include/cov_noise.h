@@ -25,6 +25,7 @@ namespace libgp
     virtual std::string to_string();
     virtual double get_threshold();
     virtual void set_threshold(double threshold);
+    CovarianceFunction * clone() const;    
   private:
     double s2;
   };

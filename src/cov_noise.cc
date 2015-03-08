@@ -50,5 +50,9 @@ namespace libgp
   }
   
   void CovNoise::set_threshold(double threshold) {}
+  
+  CovarianceFunction * CovNoise::clone() const {
+    return new CovNoise(*this);
+  }
 
 }

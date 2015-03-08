@@ -41,5 +41,8 @@ namespace libgp
   {
     return "CovLinearone";
   }
-  
+
+  CovarianceFunction * CovLinearone::clone() const {
+    return new CovLinearone(*this);
+  } 
 }

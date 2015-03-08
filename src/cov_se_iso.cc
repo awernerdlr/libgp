@@ -45,5 +45,9 @@ namespace libgp
   {
     return "CovSEiso";
   }
+
+  CovarianceFunction * CovSEiso::clone() const {
+    return new CovSEiso(*this);
+  }
   
 }

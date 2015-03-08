@@ -19,11 +19,13 @@ namespace libgp
   public:
     InputDimFilter ();
     virtual ~InputDimFilter ();
+    InputDimFilter (InputDimFilter const &);
     bool init(int input_dim, int filter, CovarianceFunction * covf);
     double get(const Eigen::VectorXd &x1, const Eigen::VectorXd &x2);
     void grad(const Eigen::VectorXd &x1, const Eigen::VectorXd &x2, Eigen::VectorXd &grad);
     void set_loghyper(const Eigen::VectorXd &p);
     virtual std::string to_string();
+    CovarianceFunction * clone() const;
   private:
     int filter;
     CovarianceFunction *nested;

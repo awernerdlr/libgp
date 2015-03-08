@@ -88,6 +88,9 @@ namespace libgp
 
       bool loghyper_changed;
 
+      /** clone the implementing type */
+      virtual CovarianceFunction * clone() const = 0;
+
     protected:
       /** Input dimensionality. */
       size_t input_dim;

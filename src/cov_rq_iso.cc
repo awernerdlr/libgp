@@ -47,5 +47,9 @@ namespace libgp
   {
     return "CovRQiso";
   }
+
+  CovarianceFunction * CovRQiso::clone() const {
+    return new CovRQiso(*this);
+  }
   
 }

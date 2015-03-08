@@ -17,6 +17,13 @@ namespace libgp
     delete first;
     delete second;
   }
+
+  CovProd::CovProd(CovProd const &s) :
+    CovarianceFunction(s),
+    param_dim_first(s.param_dim_first),
+    param_dim_second(s.param_dim_second),
+    first(s.first->clone()),
+    second(s.second->clone()){}
   
   bool CovProd::init(int n, CovarianceFunction * first, CovarianceFunction * second)
   {
@@ -56,5 +63,9 @@ namespace libgp
   std::string CovProd::to_string()
   {
     return "CovProd("+first->to_string()+", "+second->to_string()+")";
+  }
+  
+  CovarianceFunction * CovProd::clone() const {
+    return new CovProd(*this);
   }
 }

@@ -24,6 +24,7 @@ namespace libgp
     void grad(const Eigen::VectorXd &x1, const Eigen::VectorXd &x2, Eigen::VectorXd &grad);
     void set_loghyper(const Eigen::VectorXd &p);
     virtual std::string to_string();
+    CovarianceFunction * clone() const;    
   private:
     double it2;
   };
