@@ -18,7 +18,7 @@ namespace libgp {
     /** Constructor.
      *  @param input_dim dimensionality of input vectors */
     SampleSet (int input_dim);
-    
+
     /** Destructor. */    
     virtual ~SampleSet();
     
@@ -26,7 +26,7 @@ namespace libgp {
      *  @param x input array
      *  @param y target value */
     void add(const double x[], double y);
-    void add(const Eigen::VectorXd x, double y);
+    void add(const Eigen::VectorXd & x, double y);
     
     /** Get input vector at index k. */
     const Eigen::VectorXd & x (size_t k);
@@ -52,16 +52,13 @@ namespace libgp {
   private:
     
     /** Container holding input vectors. */
-    std::vector<Eigen::VectorXd *> inputs;
+    std::vector<Eigen::VectorXd> inputs;
     
     /** Container holding target values. */
     std::vector<double> targets;
     
     /** Dimensionality of input vectors. */
     size_t input_dim;
-    
-    /** Number of samples. */
-    size_t n;
   };
 }
 
