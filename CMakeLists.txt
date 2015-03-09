@@ -31,9 +31,9 @@ INCLUDE("Sources.cmake")
 ADD_LIBRARY(gp ${LIBGP_SRC} ${LIBGP_INTERFACES})
 
 # ----- Generate PKgconfig file ----
-get_property(LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
-if ("${LIB64}" STREQUAL "TRUE")
+if ("${CMAKE_SIZEOF_VOID_P}" STREQUAL "8" AND NOT EXISTS "/etc/debian_version")
     set(LIBSUFFIX 64)
+    message("Using lib64 library folder")
 else()
     set(LIBSUFFIX "")
 endif()
